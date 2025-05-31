@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>SignUp</title>
+</head>
+<body>
+    <form id="loginForm">
+        <div class="section">
+            <h1>Login</h1>
+            <p>Login to continue.</p>
+            <h4></h4>
+            <div class="inputs">
+                <input name="email" type="text" id="email" placeholder="Email">
+                <p id="textError"></p>
+            </div>
+            <div class="inputs">
+                <input name="password" type="password" id="loginPassword" placeholder="Password">
+                <p id="pError"></p>
+            </div>
+            <button type="submit" class="btn" id="submitBtn">Sign Up</button>
+            <span>if you don't have an account? <a href="signup.html">Signup in</a></span>
+        </div>
+    </form> 
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+<script src="js/auth.js"></script>
+</html>

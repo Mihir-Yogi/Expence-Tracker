@@ -7,25 +7,31 @@
     <title>SignUp</title>
 </head>
 <body>
-    <form action="signup">
-        <div class="signup-section">
+    <form id="signupForm" action="login.html">
+        <div class="section">
             <h1>SignUp</h1>
             <p>Signup to continue.</p>
             <div class="inputs">
-                <input type="text" id="fullName" placeholder="Full Name">   
+                <input  name="fullName" type="text" id="fullName" placeholder="Full Name">
+                <p id="fullNError"></p>   
             </div>
             <div class="inputs">
-                <input type="email" id="email" placeholder="Email">
+                <input name="Email" type="email" id="email" placeholder="Email">
+                <p id="emailError"></p>
             </div>
             <div class="inputs">
-                <input type="password" id="password" placeholder="Password">
+                <input name="password" type="password" id="password" placeholder="Password">
+                <p id="pError"></p>
             </div>
             <div class="inputs">
-                <input type="password" id="conformpass" placeholder="Conform password">
+                <input name="confirmPassword" type="password" id="cPassword" placeholder="Confirm password">
+                <p id="error"></p>
             </div>
-            <button type="submit" class="btn" id="submitbtn">Sign Up</button>
-            <span>already have an account? <a href="#">Sign in</a></span>
+            <button type="submit" class="btn" id="submitBtn">Sign Up</button>
+            <span>already have an account? <a href="login.html">Sign in</a></span>
         </div>
     </form> 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/bcryptjs@2.4.3/dist/bcrypt.min.js"></script>
+<script src="js/auth.js"></script>
 </html>
