@@ -25,8 +25,7 @@ if(signUpForm){
     }
 
     const checkEmailExists = (email) => {
-        let found = users.some(u => u.email === email)
-        return found
+        return users ? users.some(u => u.email === email) : false;
     }
     cPassword.addEventListener("input", checkPassMatch)
     password.addEventListener("input", checkPassMatch)
@@ -47,7 +46,7 @@ if(signUpForm){
             emailError.textContent = "Please Enter Valid Email id!"
             isValidForm = false
         }else if(checkEmailExists(email.value.trim())){
-            emailError.innerHTML = "this email alerady exists in records please Login to continue <a href=`login.html`>Login</a>"
+            emailError.innerHTML = "this email alerady exists in records please Login to continue"
             isValidEmail = false
         }else{
             emailError.textContent = ""
@@ -121,10 +120,12 @@ if(loginform){
         if(email.value == "" || !isValidEmail){
             textError.textContent = "Enter Valid Email!"
             isValidForm = false
+        }else if(!users){
+            usernotFoundErr.textContent = "User Not Found"
+            return;
         }else{
             textError.textContent = ""
             user = users.find(u => u.email === email.value.trim())
-            // console.log(user)
         }
         
         if(!user){

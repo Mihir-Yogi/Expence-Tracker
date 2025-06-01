@@ -52,3 +52,12 @@ profile.addEventListener("click", e => {
 document.getElementById("profileBtn").addEventListener("click", e => {
     window.location.href = "Components/profile.html"
 })
+
+const navbar = document.getElementById("navbar")
+window.addEventListener("scroll", e => {
+    if(window.scrollY > 0){
+        navbar.classList.add("navScroll")
+    }else{
+        navbar.classList.remove("navScroll")
+    }
+})
