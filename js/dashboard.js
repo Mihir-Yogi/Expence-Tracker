@@ -1,0 +1,51 @@
+const isLoggedIn = localStorage.getItem("isLoggedIn") == "true" || sessionStorage.getItem("isLoggedIn")
+if(!isLoggedIn){
+    window.location.href = "login.html"
+}
+
+const greet = document.getElementById("welcomeText")
+const logoutBtn = document.getElementById("logoutbtn")
+
+let user = JSON.parse(localStorage.getItem("currentUser")) || JSON.parse(sessionStorage.getItem("currentUser"))
+if(user || user.username){
+    greet.textContent = user.username 
+}else{
+    greet.textContent = "User"
+}
+if(logoutBtn){
+    logoutBtn.addEventListener("click", e => {
+    if(confirm("Are you sure you want to log out?")){
+        localStorage.removeItem("isLoggedIn")
+        localStorage.removeItem("currentUser")
+        sessionStorage.removeItem("isLoggedIn")
+        sessionStorage.removeItem("currentUser")
+        window.location.href = "login.html"
+    }
+})
+}
+
+if(localStorage.getItem("darkMode") === "enabled"){
+    document.body.classList.add("dark-mode")
+}
+
+const darkToggle = document.getElementById("darktoggle")
+let currentStatus = localStorage.getItem("darkMode")
+if(currentStatus === "enabled"){
+    darkToggle.checked = true    
+}
+darkToggle.addEventListener("click", e => {
+    document.body.classList.toggle("dark-mode")
+        document.body.classList.contains("dark-mode") ? localStorage.setItem("darkMode","enabled") : localStorage.setItem("darkMode","disabled")
+    
+})
+
+const profile = document.getElementById("profile")
+const menu = document.getElementById("menuList")
+
+profile.addEventListener("click", e => {
+    menu.classList.toggle("active")
+})
+
+document.getElementById("profileBtn").addEventListener("click", e => {
+    window.location.href = "Components/profile.html"
+})

@@ -66,17 +66,17 @@ if(signUpForm){
                     return;
                 }
                     const user = {
-                    userName : "",
+                    username : "",
                     email : "",
-                    password : ""
+                    password : "",
                 } 
-                user.userName = fullName.value.trim()
+                user.username = fullName.value.trim()
                 user.email = email.value.trim()
                 user.password = hash // ⚠️ NOTE: In real-world apps, never store plain passwords like this!
                 let users = JSON.parse(localStorage.getItem("users")) || [] 
                 users.push(user)
                 localStorage.setItem("users",JSON.stringify(users))
-                e.target.submit()
+                window.location.href = "login.html"
                 signUpForm.reset();
             })
         }else{
@@ -90,34 +90,65 @@ if(signUpForm){
 // Login page auth
 const loginform = document.getElementById("loginForm")
 if(loginform){
-    let users = JSON.parse(localStorage.getItem("users"))
-    console.log(JSON.stringify(users))
-loginform.addEventListener("submit", e => {
-    e.preventDefault()
+    
+    loginform.addEventListener("submit", e => {
+        e.preventDefault()
+        let users = JSON.parse(localStorage.getItem("users"))
 
-    const email = document.getElementById("email")
-    const loginPassword = document.getElementById("loginPassword")
-    const textError = document.getElementById("textError")
-    const usernotFoundErr = document.querySelector("h4")
+        const email = document.getElementById("email")
+        const loginPassword = document.getElementById("loginPassword")
+        const textError = document.getElementById("textError")
+        const usernotFoundErr = document.querySelector("h4")
+        const passwordError = document.getElementById("passError")
+        const remember = document.getElementById("rememberMe")
 
-    let isValidForm = true
+        const isValidEmail = regex.test(email.value.trim())
 
-    let user = users.find(u => u.email === email.value.trim())
-    console.log(user)
+        let isValidForm = true
 
-    if(!user){
-        usernotFoundErr.textContent = "User Not Found"
-    }
+        let user = ""
 
-    bcrypt.compare(user.password,loginPassword,function(err,ismatch){
-        if(err){
-            console.log("password Matching Error!",err)
+        if(email.value == "" || !isValidEmail){
+            textError.textContent = "Enter Valid Email!"
+            isValidForm = false
+        }else{
+            textError.textContent = ""
+            user = users.find(u => u.email === email.value.trim())
+            // console.log(user)
+        }
+        
+
+        if(!user){
+            usernotFoundErr.textContent = "User Not Found"
             return;
         }
 
+        dcodeIO.bcrypt.compare(loginPassword.value,user.password,function(err,ismatch){
+            if(err){
+                console.log("password Matching Error!",err)
+                return;
+            }
+
+            if(!ismatch){
+                passwordError.textContent = "invalid Password!"
+                isValidForm = false
+            }else{
+                passwordError.textContent = ""
+            }
+
+            if(isValidForm){
+                console.log(remember.checked)
+                if(remember.checked){
+                    localStorage.setItem("isLoggedIn","true")
+                    localStorage.setItem("currentUser",JSON.stringify(user))
+                }else{
+                    sessionStorage.setItem("isLoggedIn","true")
+                    sessionStorage.setItem("currentUser",JSON.stringify(user))
+                }
+                window.location.href = "index.html"
+                loginform.reset()
+            }
+        })
 
     })
-
-    isValidForm ? console.log("Login Successfull"): console.log(isEmailMatched)    
-})
 }

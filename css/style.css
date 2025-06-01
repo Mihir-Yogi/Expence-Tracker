@@ -82,3 +82,198 @@ h4{
     color: rgb(255, 19, 19);
     margin: 0;
 }
+
+.remember{
+    justify-self: start;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(57, 57, 57);
+    margin: 15px 0 0 0; 
+}
+
+.navigation{
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    
+}
+
+
+.navigation .navBtn{
+    border: none;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+/* custome darkmode toggle */ 
+.theme-checkbox {
+    --toggle-size: 16px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 3.25em;
+    height: 2.125em;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background-size: 205%;
+    background-position: 0;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 99em;
+    position: relative;
+    cursor: pointer;
+    font-size: var(--toggle-size);
+}
+
+.theme-checkbox::before {
+    content: "";
+    width: 1.25em;
+    height: 1.25em;
+    position: absolute;
+    top: 0.438em;
+    left: 0.438em;
+    background: -webkit-gradient(linear, left top, right top, color-stop(50%, #efefef), color-stop(50%, #2a2a2a)) no-repeat;
+    background: -o-linear-gradient(left, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background: linear-gradient(to right, #efefef 50%, #2a2a2a 50%) no-repeat;
+    background-size: 205%;
+    background-position: 100%;
+    border-radius: 50%;
+    -webkit-transition: 0.4s;
+    -o-transition: 0.4s;
+    transition: 0.4s;
+}
+
+.theme-checkbox:checked::before {
+    left: calc(100% - 1.25em - 0.438em);
+    background-position: 0;
+}
+
+.theme-checkbox:checked {
+    background-position: 100%;
+}
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+    cursor: pointer;
+    background-color: #efefef;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.controls{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer{
+    position: relative;
+    margin: 0 5px;
+}
+
+.menu{
+    position: absolute;
+    width: 100px;
+    right: -10px;
+    top: 40px;
+    background-color: #efefef;
+    height: auto;
+    border-radius: 5px;
+    visibility: hidden;
+}
+
+.menu .title{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 8px;
+}
+
+.menu .menu-icon{
+    margin-right: 5px;
+}
+
+.menu .horizontalLine{
+    color: #2a2a2a;
+    margin: 0 10px;
+}
+
+.menu.active{
+    visibility: visible;
+}
+
+.menu ul{
+    padding: 8px 0;
+}
+
+.menu ul li{
+    text-decoration: none;
+    list-style: none;
+    padding: 0 12px; 
+    font-size: 15px;
+    margin: 5px 0;
+}
+
+.menu ul li:hover{
+    color: #0068d8;
+    cursor: pointer;
+}
+.menu ul li .Btn{
+    border: none;
+    font-size: 15px;
+}
+
+.menu::before{
+    content: "";
+    position: absolute;
+    top: -5;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    background-color: #efefef;
+    transform: rotate(45deg);
+}
+
+
+
+/* DarkMode */
+
+
+.dark-mode{
+    background-color: #121212;
+    color: #f1f1f1;
+    transition: 0.2s ease-in-out;
+}
+
+.dark-mode .menu,
+.dark-mode .menu::before{
+    background-color: #2e2e2e;
+}
+
+.dark-mode input{
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+}   
+.dark-mode .Btn{
+    background-color: #2e2e2e;
+    color: #f3f3f3;  
+}
+.dark-mode .material-symbols-outlined{
+    background-color: #2e2e2e;
+    color: #f3f3f3;
+}
+.dark-mode .sign svg path {
+    fill: #f3f3f3;  
+    color: #f3f3f3;  
+}
+
+.dark-mode .navigation .navBtn{
+    color: white;
+    border-bottom: 1px solid white;
+}

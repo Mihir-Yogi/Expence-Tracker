@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&icon_names=person" />
+    <title>Dashboard</title>
+</head>
+<body style="padding: 0 12px;">
+    <nav class="navigation">
+        <div class="title"><h1>Expence Tracker</h1></div>
+        <div class="controls">
+            <input type="checkbox" id="darktoggle" class="theme-checkbox">
+            <div class="profileContainer">
+                <span id="profile" class="material-symbols-outlined">
+                    person
+                </span>
+                <div id="menuList" class="menu">
+                    <div class="title">
+                        <h5 id="welcomeText"></h5>
+                    </div>
+                    <hr class="horizontalLine">
+                    <ul>
+                        <li id="profileBtn"><i class="fa-solid fa-user menu-icon"></i>profile</li>
+                        <li id="logoutbtn"><i class="fa-solid fa-right-from-bracket menu-icon"></i>Logout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <h3 id="welcomeText"></h3>
+</body>
+<script src="https://kit.fontawesome.com/6ce4435109.js" crossorigin="anonymous"></script>
+<script src="js/dashboard.js"></script>
+</html>
