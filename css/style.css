@@ -61,10 +61,10 @@ input::placeholder{
     color: white;
     border: none;
     border-radius: 5px;
-    box-shadow: 2px 2px 4px rgb(110, 110, 110);
+    box-shadow: 2px 2px 4px rgb(82, 82, 82);
     background: #007bff;
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 .btn:hover{
@@ -239,10 +239,15 @@ h4{
     transform: rotate(45deg);
 }
 
-
+#success{
+    background-color: #ddffdd;
+    width: 100%;
+    color: #121212;
+    font-weight: 500;
+    display: block;
+}
 
 /* DarkMode */
-
 
 .dark-mode{
     background-color: #121212;
@@ -250,16 +255,17 @@ h4{
     transition: 0.2s ease-in-out;
 }
 
+.dark-mode .section,
+.dark-mode input{
+    background-color: #2e2e2e;
+    color: #f3f3f3;
+}
+
 .dark-mode .menu,
 .dark-mode .menu::before{
     background-color: #2e2e2e;
 }
 
-.dark-mode input{
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #555;
-}   
 .dark-mode .Btn{
     background-color: #2e2e2e;
     color: #f3f3f3;  
@@ -276,4 +282,38 @@ h4{
 .dark-mode .navigation .navBtn{
     color: white;
     border-bottom: 1px solid white;
+}
+
+/* Profile Page style */
+
+.resetLink{
+    display: flex;
+    align-self: flex-start;
+    font-size: 12px;
+}
+
+/* RESET PASSWORD form  */
+
+.resetform .emailInput{
+    display: flex;
+    align-items: center;
+}
+
+.resetform .emailInput input{
+    width: 100%;
+}
+.resetform .emailInput button{
+    width: 10%;
+    height: 30px;
+    margin: 5px;
+}
+.resetform p{
+    display: flex;
+    align-self: start;
+    color: red;
+    margin: 0;
+}
+
+.resetform #success{
+    font-size: 15px;
 }

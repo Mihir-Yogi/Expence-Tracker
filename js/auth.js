@@ -14,7 +14,7 @@ if(signUpForm){
     const passError = document.getElementById("pError")
 
     let isMatch = false
-
+    let users = JSON.parse(localStorage.getItem("users"))
     const checkPassMatch = () => {
         isMatch = password.value === cPassword.value
         if(isMatch){
@@ -24,6 +24,10 @@ if(signUpForm){
         }
     }
 
+    const checkEmailExists = (email) => {
+        let found = users.some(u => u.email === email)
+        return found
+    }
     cPassword.addEventListener("input", checkPassMatch)
     password.addEventListener("input", checkPassMatch)
 
@@ -42,11 +46,14 @@ if(signUpForm){
         if(email.value.trim() == "" || !isValidEmail){
             emailError.textContent = "Please Enter Valid Email id!"
             isValidForm = false
+        }else if(checkEmailExists(email.value.trim())){
+            emailError.innerHTML = "this email alerady exists in records please Login to continue <a href=`login.html`>Login</a>"
+            isValidEmail = false
         }else{
             emailError.textContent = ""
         }
         if(password.value == "" || password.value.length < 6){
-            passError.textContent = "Enter Password upto 6 letters!"
+            passError.textContent = "Password must be at least 6 characters!"
             isValidForm = false
         }else{
             passError.textContent = ""
@@ -73,7 +80,10 @@ if(signUpForm){
                 user.username = fullName.value.trim()
                 user.email = email.value.trim()
                 user.password = hash // ⚠️ NOTE: In real-world apps, never store plain passwords like this!
-                let users = JSON.parse(localStorage.getItem("users")) || [] 
+                if (!Array.isArray(users)) {
+                    users = [] 
+                }
+                console.log(users)  
                 users.push(user)
                 localStorage.setItem("users",JSON.stringify(users))
                 window.location.href = "login.html"
@@ -106,7 +116,7 @@ if(loginform){
 
         let isValidForm = true
 
-        let user = ""
+        let user = {}
 
         if(email.value == "" || !isValidEmail){
             textError.textContent = "Enter Valid Email!"
@@ -117,7 +127,6 @@ if(loginform){
             // console.log(user)
         }
         
-
         if(!user){
             usernotFoundErr.textContent = "User Not Found"
             return;
@@ -151,4 +160,93 @@ if(loginform){
         })
 
     })
+}
+const passResetForm = document.getElementById("passResetForm")
+if(passResetForm){
+    
+    const mail = document.getElementById("resetEmail")
+    const checkMailBtn = document.getElementById("checkEmail")
+    const container = document.getElementById("container")
+    let users =JSON.parse(localStorage.getItem("users"))
+    let found;
+    checkMailBtn.addEventListener("click", e => {
+        e.preventDefault()
+    
+        document.getElementById("textError").textContent = ""
+
+        found = users.find(u => u.email === mail.value.trim())
+        
+        if(found){
+            if(!document.getElementById("newPassword")){
+                let input  = document.createElement("input")
+                input.type = "password"
+                input.id = "newPassword"
+
+                let p = document.createElement("p")
+                p.id = "passError"
+
+                container.append(input,p)
+            }
+        }else{
+            document.getElementById("textError").textContent = "Email not Found!"
+        }
+    })
+    
+    async function encriptionPassword (password,saltLenght) {
+        return new Promise((resolve,reject) => {
+            dcodeIO.bcrypt.hash(password,saltLenght,function(err,hash){
+                    if(err){
+                        reject("Hashing Error: " + err)
+                    }else{
+                        resolve(hash)
+                    }
+                })
+        })
+    }
+    
+    passResetForm.addEventListener("submit", async e => {
+        e.preventDefault()
+        const newPass = document.getElementById("newPassword")
+        const passError = document.getElementById("passError")
+        const success = document.getElementById("success")
+        
+        passError.textContent = ""
+        success.innerHTML = ""
+
+        if(newPass){
+            if(found){
+                let flag = true
+                let userIndex = users.findIndex(u => u.email === found.email)
+                if(newPass.value.length < 6){
+                    passError.textContent = "Password must be at least 6 characters"
+                    flag = false
+                }else{
+                    try{
+                        const hashpass = await encriptionPassword(newPass.value,10);
+                        users[userIndex].password = hashpass
+                    }catch(err){
+                        console.log(err)
+                        flag = false
+                    }
+                    if(flag){
+                        localStorage.setItem("users", JSON.stringify(users))
+                        success.innerHTML = "Password Successfully changed. Please login."
+                        newPass.remove()
+                        mail.value = ""
+                        setTimeout(() => {
+                            window.location.href = "../../login.html"
+                        }, 2000);
+                    }else{
+                        console.log("Invalid Email")
+                    }
+                }
+            }else{
+                console.log("Enter Valid Email")
+        }
+    }
+})
+
+document.getElementById("backBtn").addEventListener("click", e => {
+    window.location.href = "../../login.html"
+})
 }

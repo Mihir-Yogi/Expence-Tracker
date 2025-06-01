@@ -12,13 +12,16 @@ if(user || user.username){
 }else{
     greet.textContent = "User"
 }
+
 if(logoutBtn){
     logoutBtn.addEventListener("click", e => {
     if(confirm("Are you sure you want to log out?")){
         localStorage.removeItem("isLoggedIn")
         localStorage.removeItem("currentUser")
+        localStorage.removeItem("darkMode")
         sessionStorage.removeItem("isLoggedIn")
         sessionStorage.removeItem("currentUser")
+        sessionStorage.removeItem("darkMode")
         window.location.href = "login.html"
     }
 })
