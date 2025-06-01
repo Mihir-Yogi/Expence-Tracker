@@ -3,14 +3,17 @@ if(!isLoggedIn){
     window.location.href = "login.html"
 }
 
-const greet = document.getElementById("welcomeText")
+const profilegreet = document.getElementById("welcomeText")
+const homeGreet = document.getElementById("homeGreet")
 const logoutBtn = document.getElementById("logoutbtn")
 
 let user = JSON.parse(localStorage.getItem("currentUser")) || JSON.parse(sessionStorage.getItem("currentUser"))
 if(user || user.username){
-    greet.textContent = user.username 
+    profilegreet.textContent = user.username 
+    homeGreet.textContent = user.username
 }else{
-    greet.textContent = "User"
+    profilegreet.textContent = "User"
+    homeGreet.textContent = "User"
 }
 
 if(logoutBtn){
@@ -51,13 +54,4 @@ profile.addEventListener("click", e => {
 
 document.getElementById("profileBtn").addEventListener("click", e => {
     window.location.href = "Components/profile.html"
-})
-
-const navbar = document.getElementById("navbar")
-window.addEventListener("scroll", e => {
-    if(window.scrollY > 0){
-        navbar.classList.add("navScroll")
-    }else{
-        navbar.classList.remove("navScroll")
-    }
 })
