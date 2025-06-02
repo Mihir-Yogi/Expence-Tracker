@@ -31,17 +31,61 @@
     </nav>
     <div class="sideNav">
         <ul>
-            <li><i class="fa-solid fa-house"></i>Dashboard<i class="fa-solid fa-chevron-right"></i></li>
-            <li><i class="fa-solid fa-plus"></i>Add Expense<i class="fa-solid fa-chevron-right"></i></li>
-            <li><i class="fa-solid fa-eye"></i>Show Expenses<i class="fa-solid fa-chevron-right"></i></li>
+            <li id="dashboardTab"><i class="fa-solid fa-house"></i>Dashboard<i class="fa-solid fa-chevron-right"></i></li>
+            <li id="addExpenseTab"><i class="fa-solid fa-plus"></i>Add Expense<i class="fa-solid fa-chevron-right"></i></li>
+            <li id="showExpenseTab"><i class="fa-solid fa-eye"></i>Show Expenses<i class="fa-solid fa-chevron-right"></i></li>
         </ul>
     </div>
     <div class="main-container">
-        <div class="dashboard active">
+        <section id="dashboardSection">
             <h5>Welcome <span id="homeGreet"></span></h5>
-        </div>
+        </section>
+
+        <section id="addExpenseSection">
+            <form id="expenseForm" class="form">
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" placeholder="Expense title" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="number" id="amount" placeholder="Amount in ₹" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="">Select Category</option>
+                        <option value="Food">Food</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="Optional notes..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit"><i class="fa-solid fa-plus"></i> Add Expense</button>
+            </form>
+
+        </section>
+
+        <section id="showExpenseSection">
+            <h5>Show Expense</h5>
+        </section>
     </div>
 </body>
 <script src="https://kit.fontawesome.com/6ce4435109.js" crossorigin="anonymous"></script>
 <script src="js/dashboard.js"></script>
+<script src="js/manageExpense.js"></script>
 </html>

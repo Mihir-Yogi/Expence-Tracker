@@ -55,3 +55,38 @@ profile.addEventListener("click", e => {
 document.getElementById("profileBtn").addEventListener("click", e => {
     window.location.href = "Components/profile.html"
 })
+
+// Show Main section 
+
+const dashboardTab = document.getElementById("dashboardTab")
+const addExpenseTab = document.getElementById("addExpenseTab")
+const showExpenseTab = document.getElementById("showExpenseTab")
+
+const dashboardSection = document.getElementById("dashboardSection")
+const addExpenseSection = document.getElementById("addExpenseSection")
+const showExpenseSection = document.getElementById("showExpenseSection")
+
+const showSection = showSec => {
+    dashboardSection.style.display = "none"
+    addExpenseSection.style.display = "none"
+    showExpenseSection.style.display = "none"
+    
+    showSec.style.display = "block"
+}
+
+dashboardTab.addEventListener("click", e => {
+    showSection(dashboardSection)
+})
+
+addExpenseTab.addEventListener("click", e => {
+    showSection(addExpenseSection)
+})
+
+showExpenseTab.addEventListener("click", e => {
+    showSection(showExpenseSection)
+})
+
+window.addEventListener("DOMContentLoaded", e => {
+    showSection(dashboardSection)
+})
+

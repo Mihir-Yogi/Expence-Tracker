@@ -92,6 +92,7 @@ h4{
 }
 
 .navigation{
+    top: 0;
     font-family: "Poppins", sans-serif;
     display: flex;
     justify-content: space-between;
@@ -349,13 +350,16 @@ h4{
     height: 100vh;
     position: fixed;
     left: 0;
-    padding-top: 20px;
     transition: 0.3s;
-    z-index: 0;
+    z-index: 10;
+}
+
+.sideNav ul{
+    padding-top: 20px;
 }
 
 .sideNav ul li{
-    padding:10px 15px;
+    padding: 15px 15px;
     list-style: none;
     font-family: 'popins', sans-serif;
     font-size: 15px;
@@ -382,4 +386,66 @@ h4{
 .main-container{
     margin-left: 220px;
     padding: 20px;
+    font-family: "popins", sans-serif;
+}
+
+.dark-mode .form{
+    background-color: #2e2e2e
+}
+
+.dark-mode textarea{
+    background: transparent;
+    color: white;
+}
+.dark-mode select{
+    background: transparent;
+    color: rgb(137, 137, 137);
+}
+.form {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}   
+
+.form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.btn-submit {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    width: 100%;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
 }
