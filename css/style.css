@@ -449,3 +449,53 @@ h4{
 .btn-submit:hover {
     background-color: #0056b3;
 }
+
+/* show expenses */
+
+.table,th,td{
+    padding: 3px;
+    padding-top: 5px;
+}
+
+.table td{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+    width: 50px;
+    padding: 10px 0;
+}
+
+.table td:first-child{
+    width: 20px;
+}
+
+.table th{
+    text-align: start;
+    padding-bottom: 10px;
+}
+
+.table th:last-child{
+    text-align: center;
+}
+
+.table td:last-child,
+.table td:nth-last-child(2){
+    text-align: center;
+}
+
+thead tr {
+    border-bottom: 1px solid rgb(43, 43, 43);
+}
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableLayout{
+    padding: 30px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
