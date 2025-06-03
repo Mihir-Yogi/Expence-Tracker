@@ -8,6 +8,18 @@
     <title>Dashboard</title>
 </head>
 <body>
+    <div id="loader">
+        <div class="dot-spinner">
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+            <div class="dot-spinner__dot"></div>
+        </div>
+    </div>
     <nav id="navbar" class="navigation">
         <div class="title"><h1>Expence Tracker</h1></div>
         <div class="controls">
@@ -41,8 +53,32 @@
             <h5>Welcome <span id="homeGreet"></span></h5>
         </section>
 
+
+        <section id="showExpenseSection">
+            <div class="tableLayout">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scop="col">#</th>
+                            <th scop="col">Title</th>
+                            <th scop="col">Amount</th>
+                            <th scop="col">Date</th>
+                            <th scop="col">Category</th>
+                            <th scop="col">Notes</th>
+                            <th scop="col" colspan="2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- data list gose here  -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
         <section id="addExpenseSection">
             <form id="expenseForm" class="form">
+                <span id="backBtn"><i class="fa-solid fa-reply"></i></span>
+                <span id="success"></span> 
                 <div class="form-group">
                     <label for="title">Title</label>
                     <input type="text" id="title" placeholder="Expense title" required />
@@ -78,76 +114,6 @@
                 <button type="submit" class="btn-submit"><i class="fa-solid fa-plus"></i> Add Expense</button>
             </form>
 
-        </section>
-
-        <section id="showExpenseSection">
-            <div class="tableLayout">
-                <table class="table">
-                    <tbody>
-                        <thead>
-                            <tr>
-                                <th scop="col">id</th>
-                                <th scop="col">Title</th>
-                                <th scop="col">Amount</th>
-                                <th scop="col">Date</th>
-                                <th scop="col">Category</th>
-                                <th scop="col">Notes</th>
-                                <th scop="col" colspan="2">Action</th>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <td>1</td>
-                            <td>TItle 2</td>
-                            <td>588</td>
-                            <td>2025-02-02</td>
-                            <td>Food</td>
-                            <td>-</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>TItle 2</td>
-                            <td>588</td>
-                            <td>2025-02-02</td>
-                            <td>Food</td>
-                            <td>-</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>TItle 2</td>
-                            <td>588</td>
-                            <td>2025-02-02</td>
-                            <td>Food</td>
-                            <td>-</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>TItle 2</td>
-                            <td>588</td>
-                            <td>2025-02-02</td>
-                            <td>Food</td>
-                            <td>-</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>TItle 2</td>
-                            <td>588</td>
-                            <td>2025-02-02</td>
-                            <td>Food</td>
-                            <td>-</td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
         </section>
     </div>
 </body>

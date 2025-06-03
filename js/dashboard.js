@@ -25,6 +25,7 @@ if(logoutBtn){
         sessionStorage.removeItem("isLoggedIn")
         sessionStorage.removeItem("currentUser")
         sessionStorage.removeItem("darkMode")
+        localStorage.removeItem("showSectionStatus")
         window.location.href = "login.html"
     }
 })
@@ -39,6 +40,7 @@ let currentStatus = localStorage.getItem("darkMode")
 if(currentStatus === "enabled"){
     darkToggle.checked = true    
 }
+
 darkToggle.addEventListener("click", e => {
     document.body.classList.toggle("dark-mode")
         document.body.classList.contains("dark-mode") ? localStorage.setItem("darkMode","enabled") : localStorage.setItem("darkMode","disabled")
@@ -56,37 +58,8 @@ document.getElementById("profileBtn").addEventListener("click", e => {
     window.location.href = "Components/profile.html"
 })
 
-// Show Main section 
-
-const dashboardTab = document.getElementById("dashboardTab")
-const addExpenseTab = document.getElementById("addExpenseTab")
-const showExpenseTab = document.getElementById("showExpenseTab")
-
-const dashboardSection = document.getElementById("dashboardSection")
-const addExpenseSection = document.getElementById("addExpenseSection")
-const showExpenseSection = document.getElementById("showExpenseSection")
-
-const showSection = showSec => {
-    dashboardSection.style.display = "none"
-    addExpenseSection.style.display = "none"
-    showExpenseSection.style.display = "none"
-    
-    showSec.style.display = "block"
-}
-
-dashboardTab.addEventListener("click", e => {
-    showSection(dashboardSection)
-})
-
-addExpenseTab.addEventListener("click", e => {
-    showSection(addExpenseSection)
-})
-
-showExpenseTab.addEventListener("click", e => {
-    showSection(showExpenseSection)
-})
-
 window.addEventListener("DOMContentLoaded", e => {
-    showSection(dashboardSection)
+    setTimeout(()=>{
+        document.getElementById("loader").style.display = "none"
+    },2000)
 })
-

@@ -232,6 +232,7 @@ if(passResetForm){
                     if(flag){
                         localStorage.setItem("users", JSON.stringify(users))
                         success.innerHTML = "Password Successfully changed. Please login."
+                        success.style.visibility = "visible"
                         newPass.remove()
                         mail.value = ""
                         setTimeout(() => {
