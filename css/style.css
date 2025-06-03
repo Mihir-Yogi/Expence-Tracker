@@ -501,15 +501,15 @@ thead tr {
     border-bottom: 1px solid white ;
 }
 
-.dark-mode i {
+.dark-mode .icon i {
     color: white;
 }
 
-.dark-mode i:hover{
+.dark-mode .icon i:hover{
     color: #03dac6;
 }
 
- i:hover{
+.icon i:hover{
     color: #0068d8;
 }
 

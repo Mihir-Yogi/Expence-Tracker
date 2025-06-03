@@ -22,9 +22,11 @@ dashboardTab.addEventListener("click", e => {
 })
 
 addExpenseTab.addEventListener("click", e => {
+    clearForm()
     showSection(addExpenseSection)
     localStorage.setItem("showSectionStatus","addExpense")
     backBtnWork()
+
 })
 
 const showList = () => {
@@ -63,11 +65,21 @@ const showList = () => {
 }
 
 showExpenseTab.addEventListener("click", e => {
+    clearForm()
     showSection(showExpenseSection)
     localStorage.setItem("showSectionStatus","showExpense")
     backBtnWork()
     showList()
 })
+
+const clearForm = () => {
+    document.getElementById("title").value = ""
+    document.getElementById("amount").value = ""
+    document.getElementById("date").value = ""
+    document.getElementById("category").value = ""
+    document.getElementById("notes").value = ""
+    document.getElementById("success").value = ""
+}
 
 window.addEventListener("DOMContentLoaded", e => {
     if(localStorage.getItem("showSectionStatus")){
@@ -205,7 +217,6 @@ document.getElementById("tableBody").addEventListener("click", e => {
         const rowIndex = parseInt(editBtn.dataset.id);
         if (!isNaN(rowIndex)) {
             editExpense(rowIndex);
-            console.log(rowIndex)
         }
     }
 
@@ -220,9 +231,11 @@ document.getElementById("tableBody").addEventListener("click", e => {
                 }else{
                     sessionStorage.setItem("currentUser",JSON.stringify(currentUser))
                 }
-            users[userIndex] = currentUser
-            localStorage.setItem("users",JSON.stringify(users))
-            showList()
+                users[userIndex] = currentUser
+                localStorage.setItem("users",JSON.stringify(users))
+                showList()
+                document.getElementById("addExpenseSection").style.display = "none"
+                clearForm()
         }
     }
 
