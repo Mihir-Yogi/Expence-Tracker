@@ -501,15 +501,15 @@ thead tr {
     border-bottom: 1px solid white ;
 }
 
-.dark-mode .icon i {
+.dark-mode .icon{
     color: white;
 }
 
-.dark-mode .icon i:hover{
+.dark-mode .icon:hover{
     color: #03dac6;
 }
 
-.icon i:hover{
+.icon:hover{
     color: #0068d8;
 }
 
@@ -671,9 +671,36 @@ body::-webkit-scrollbar {
 .edBtn {
     background: transparent;
     border: none;
-    cursor: pointer;
 }
 
 .icon{
     font-size: 15px;
+    cursor: pointer;
+}
+
+/* Dashboard Section */
+
+.dashboard{
+    padding: 50px 100px;
+}
+
+.secondory-text{
+    margin: 10px 0 10px 10px ;
+    font-size: 20px;
+}
+
+.dashboard .container{
+    /* background-color: red; */
+    display: flex;
+    width: 100%;
+    height: 200px;
+}
+
+.dashboard .container .box{
+    background: transparent;
+    border: 3px solid rgb(203, 203, 203);
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    margin: 5px;
 }
