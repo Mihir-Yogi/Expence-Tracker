@@ -99,7 +99,7 @@ h4{
     display: flex;
     justify-content: space-between;
     align-items: center;   
-    padding: 10px;
+    padding: 10px 15px;
     position: sticky;
     z-index: 100;
     background-color: #e1e1e1;
@@ -812,7 +812,7 @@ body::-webkit-scrollbar {
     }
 
     .dashboard{
-        padding: 20px 10px;
+        padding: 40px 10px;
     }
     .hamburger {
         display: inline;
@@ -885,6 +885,13 @@ body::-webkit-scrollbar {
     } */
     .dashboard .container i{
         display: none;
+        height: 30px;
+    }
+    .dashboard .container{
+        /* background-color: red; */
+        display: flex;
+        width: 100%;
+        height: 150px;
     }
 
     .dashboard .container .box #budget-container #editBudgetBtn{
@@ -893,7 +900,8 @@ body::-webkit-scrollbar {
         height: 30px;
     }    
     .form {
-        margin-top: 0   ;
+        margin-top: 0;
+        padding-bottom: 100%;
     }
     .tableLayout {
         overflow-x: auto;
@@ -908,17 +916,12 @@ body::-webkit-scrollbar {
         border-radius: 0;
     }
 
-    input[type="date"] {
-      /* width: 100%; */
-      padding: 10px;
-      font-size: 16px;
-      background-color: transparent;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      color: white; /* adjust based on dark/light mode */
-    }
-
-    .dark-mode input[type="date"] {
-      color: white;
+    .section{
+        border: none;
+        margin-top: 50px;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0;
+        padding-top: 50px;
     }
 }

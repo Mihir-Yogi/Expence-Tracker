@@ -84,7 +84,7 @@ const checkBudgetExists = () => {
     const budget = localStorage.getItem("budget")
     if(budget){
         budgetContainer.innerHTML = `
-            <span class="toatalSDisplay" id="budgetPriceText">₹${budget.toLocaleString('en-In')}</span>
+            <span class="toatalSDisplay" id="budgetPriceText">₹${parseInt(budget).toLocaleString('en-IN')}</span>
             <button id="editBudgetBtn"><i class="fa-solid fa-pen"></i> Edit</button>
             `
         getPriceDetails(budget)
@@ -115,9 +115,11 @@ const checkBudgetExists = () => {
 }
 
 const getPriceDetails = (budget) => {
-    let totalS = user.totalSpent ? user.totalSpent : 0
+    let totalS = Number(user.totalSpent) || 0
     totalSpent.textContent = `₹${totalS.toLocaleString("en-IN")}`
-    remainingPrice.textContent = `₹${((budget ? budget - totalS : 0)).toLocaleString('en-In')}`
+    const numericBudget = Number(budget) || 0
+    const remaining = numericBudget - totalS
+    remainingPrice.textContent = `₹${remaining.toLocaleString('en-IN')}`
 }
 
 
