@@ -124,7 +124,7 @@ const updateTotalExpense = (thiscurrentUser,thisusers) =>{
     // console.log(currentUser)
     thisusers[userIndex] = thiscurrentUser
     if(localStorage.getItem("isLoggedIn")){
-        localStorage.setItem("currentUser",JSON.stringify(tihscurrentUser))
+        localStorage.setItem("currentUser",JSON.stringify(thiscurrentUser))
     }else{
         sessionStorage.setItem("currentUser",JSON.stringify(thiscurrentUser))
     }
