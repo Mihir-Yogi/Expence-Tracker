@@ -892,6 +892,19 @@ body::-webkit-scrollbar {
         width: 40px;
         height: 30px;
     }    
+    .form {
+        margin-top: 0   ;
+    }
+    .tableLayout {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
 
-
+    .table {
+        min-width: 600px; 
+    }
+    
+    .tableLayout{
+        border-radius: 0;
+    }
 }
