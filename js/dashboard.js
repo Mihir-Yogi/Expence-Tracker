@@ -102,7 +102,7 @@ const checkBudgetExists = () => {
         })
         
     }else{
-        budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Enter Your Budget"> <button id="budgetBtn"><i class="fa-solid fa-plus"></i> Add</button>`
+        budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Add Budget"> <button id="budgetBtn"><i class="fa-solid fa-plus"></i> Add</button>`
         getPriceDetails(budget)
         
         const budgetBtn = document.getElementById("budgetBtn")  
@@ -123,6 +123,11 @@ const getPriceDetails = (budget) => {
 
 const hamburger = document.getElementById('hamburger');
 const sideNav = document.querySelector('.sideNav');
+
+hamburger.addEventListener('click', () => {
+  sideNav.classList.toggle('open');
+});
+
 document.addEventListener('click', function (event) {
 if (
     !sideNav.contains(event.target) &&

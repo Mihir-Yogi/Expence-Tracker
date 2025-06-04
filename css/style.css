@@ -5,6 +5,21 @@
     margin: 0;
     padding: 0;
 }
+.section{
+    background-color: rgb(255, 255, 255);
+    padding: 50px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    width: 320px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    text-align: center;
+    box-shadow: 1px 1px 5px rgb(97, 97, 97);
+    border-radius: 5px;
+}
 
 h1{
     font-weight: 300;
@@ -822,4 +837,56 @@ body::-webkit-scrollbar {
     .dashboard p{
         font-size: 16px;
     }
+
+    .dashboard .container .box .toatalSDisplay:last-child,
+    .dashboard .container .box #budget-container .toatalSDisplay:first-child{
+        font-size: 20px;
+        padding-bottom: 1px;
+    }
+    
+    .dashboard .container .box{
+        width: 100px;
+        height: 100px;
+        margin: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        padding-left: 10px;
+        font-size: 15px;
+    }
+    .dashboard .container .box .toatalSDisplay{
+        padding-bottom: 10px;
+    }
+
+    #budget-container input{
+        width: 90%;
+        height: 20px;
+        font-size: 12px;
+        margin: 0;
+        border-bottom: 1px solid rgb(137, 137, 137);
+        color: rgb(39, 39, 39);
+    }
+
+    #budget-container #budgetBtn{
+        margin: 0 0;
+        width: 40px;
+        height: 30px;
+    }
+/* 
+    #budget-container{
+        display: flex;
+        flex-direction: column;
+    } */
+    .dashboard .container .box #budget-container #editBudgetBtn i{
+        font-size: 15px;    
+    }
+
+    .dashboard .container .box #budget-container #editBudgetBtn{
+        margin: 0 0;
+        width: 40px;
+        height: 30px;
+    }    
+
+
 }
