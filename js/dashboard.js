@@ -51,6 +51,7 @@ const profile = document.getElementById("profile")
 const menu = document.getElementById("menuList")
 
 profile.addEventListener("click", e => {
+    e.stopPropagation();
     menu.classList.toggle("active")
 })
 
@@ -121,13 +122,16 @@ const getPriceDetails = (budget) => {
 
 
 const hamburger = document.getElementById('hamburger');
-  const sideNav = document.querySelector('.sideNav');
-
-  hamburger.addEventListener('click', () => {
-    sideNav.classList.toggle('open');
-  });
-  document.addEventListener('click', function (event) {
-  if (!sideNav.contains(event.target) && !hamburger.contains(event.target)) {
+const sideNav = document.querySelector('.sideNav');
+document.addEventListener('click', function (event) {
+if (
+    !sideNav.contains(event.target) &&
+    !hamburger.contains(event.target) &&
+    !menu.contains(event.target) &&
+    !profile.contains(event.target)
+) {
     sideNav.classList.remove('open');
-  }
+    menu.classList.remove("active");
+}
 });
+
