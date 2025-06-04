@@ -16,24 +16,26 @@ const showSection = showSec => {
     showSec.style.display = "block"
 }
 
+const currentUser = localStorage.getItem("isLoggedIn") ? JSON.parse(localStorage.getItem("currentUser")) : JSON.parse(sessionStorage.getItem("currentUser"))
 dashboardTab.addEventListener("click", e => {
+    document.getElementById("totalSpentPrice").textContent = `₹${currentUser.totalSpent}`
+    loadChart();
     showSection(dashboardSection)
     localStorage.setItem("showSectionStatus","dashboard")
 })
 
 addExpenseTab.addEventListener("click", e => {
+    loadChart();
     clearForm()
     showSection(addExpenseSection)
     localStorage.setItem("showSectionStatus","addExpense")
     backBtnWork()
-
 })
 
 const showList = () => {
-    
+    loadChart();
     const tbody = document.getElementById("tableBody")
     tbody.textContent = ""
-    const currentUser = localStorage.getItem("isLoggedIn") ? JSON.parse(localStorage.getItem("currentUser")) : JSON.parse(sessionStorage.getItem("currentUser"))
     // console.log(currentUser)
     const expens = currentUser.expens || []
     // console.log(expens)
@@ -82,6 +84,7 @@ const clearForm = () => {
 }
 
 window.addEventListener("DOMContentLoaded", e => {
+    checkBudgetExists()
     if(localStorage.getItem("showSectionStatus")){
         switch(localStorage.getItem("showSectionStatus")){
             case "dashboard":
@@ -111,14 +114,22 @@ window.addEventListener("DOMContentLoaded", e => {
 const expensesForm = document.getElementById("expenseForm")
 let users = JSON.parse(localStorage.getItem("users"))
 
-let currentUser;
-if(localStorage.getItem("isLoggedIn")){
-    currentUser = JSON.parse(localStorage.getItem("currentUser"))
-}else{
-    currentUser = JSON.parse(sessionStorage.getItem("currentUser"))
-}
 let userIndex = users.findIndex(u => u.email == currentUser.email)
 
+const updateTotalExpense = (thiscurrentUser,thisusers) =>{
+    let amountsArr = thiscurrentUser.expens.map(e => parseInt(e.amount))
+    let total = amountsArr.reduce((acc,e)=> acc + e ,0)
+    // console.log(total)
+    thiscurrentUser.totalSpent = total
+    // console.log(currentUser)
+    thisusers[userIndex] = thiscurrentUser
+    if(localStorage.getItem("isLoggedIn")){
+        localStorage.setItem("currentUser",JSON.stringify(tihscurrentUser))
+    }else{
+        sessionStorage.setItem("currentUser",JSON.stringify(thiscurrentUser))
+    }
+    localStorage.setItem("users",JSON.stringify(thisusers))
+}
 expensesForm.addEventListener("submit", e => {
     e.preventDefault()
     
@@ -143,6 +154,7 @@ expensesForm.addEventListener("submit", e => {
 
     let expens = currentUser.expens || []
 
+
     // console.log(expens)
     const index = expensesForm.dataset.editing;
     let data = {
@@ -150,9 +162,9 @@ expensesForm.addEventListener("submit", e => {
         "amount": amount.value.trim(),
         "date": date.value ? date.value : autoDate,
         "category": category.value.trim(),
-        "notes": notes.value.trim() || "-"
+        "notes": notes.value.trim() || "-",
     }
-    console.log(data)
+    // console.log(data)
 
     if (index !== undefined) {
         expens[index] = data;
@@ -160,17 +172,22 @@ expensesForm.addEventListener("submit", e => {
     } else {
         expens.push(data);
     }
-
-
     currentUser.expens = expens
-    // console.log(currentUser)
-    users[userIndex] = currentUser
-    if(localStorage.getItem("isLoggedIn")){
-        localStorage.setItem("currentUser",JSON.stringify(currentUser))
-    }else{
-        sessionStorage.setItem("currentUser",JSON.stringify(currentUser))
-    }
-    localStorage.setItem("users",JSON.stringify(users))
+
+    // currentUser.expens = expens
+    // let amountsArr = currentUser.expens.map(e => parseInt(e.amount))
+    // let total = amountsArr.reduce((acc,e)=> acc + e ,0)
+    // // console.log(total)
+    // currentUser.totalSpent = total
+    // // console.log(currentUser)
+    // users[userIndex] = currentUser
+    // if(localStorage.getItem("isLoggedIn")){
+    //     localStorage.setItem("currentUser",JSON.stringify(currentUser))
+    // }else{
+    //     sessionStorage.setItem("currentUser",JSON.stringify(currentUser))
+    // }
+    // localStorage.setItem("users",JSON.stringify(users))
+    updateTotalExpense(currentUser,users)
     title.value = ""
     amount.value = ""
     date.value = ""
@@ -236,6 +253,9 @@ document.getElementById("tableBody").addEventListener("click", e => {
                 showList()
                 document.getElementById("addExpenseSection").style.display = "none"
                 clearForm()
+                updateTotalExpense(currentUser,users)
+                checkBudgetExists()
+                loadChart()
         }
     }
 

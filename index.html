@@ -54,10 +54,22 @@
                 <h1>👋Welcome <span id="homeGreet"></span></h1>
                 <p class="secondory-text">Here's an overview of your expenses and budget.</p>
                 <div class="container">
-                    <div class="box"></div>
-                    <div class="box"></div>
-                    <div class="box"></div>
+                    <div class="box">
+                        <span class="toatalSDisplay">Total Spent</span>
+                        <span class="toatalSDisplay" id="totalSpentPrice">₹0</span>
+                    </div>
+                    <div class="box">
+                        <span class="toatalSDisplay">Budget</span>
+                        <div  id="budget-container">
+                            <!-- <span class="toatalSDisplay">₹20,000</span> -->
+                        </div>
+                    </div>
+                    <div class="box">
+                        <span class="toatalSDisplay">Remaining Budget</span>
+                        <span class="toatalSDisplay" id="remainingPrice">₹0</span>
+                    </div>
                 </div>
+                <canvas id="expenseChart"></canvas>
             </div>
         </section>
 
@@ -125,7 +137,9 @@
         </section>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://kit.fontawesome.com/6ce4435109.js" crossorigin="anonymous"></script>
+<script src="js/chart.js"></script>
 <script src="js/dashboard.js"></script>
 <script src="js/manageExpense.js"></script>
 </html>

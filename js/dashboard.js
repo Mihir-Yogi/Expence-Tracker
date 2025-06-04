@@ -43,8 +43,8 @@ if(currentStatus === "enabled"){
 
 darkToggle.addEventListener("click", e => {
     document.body.classList.toggle("dark-mode")
-        document.body.classList.contains("dark-mode") ? localStorage.setItem("darkMode","enabled") : localStorage.setItem("darkMode","disabled")
-    
+    loadChart();
+    document.body.classList.contains("dark-mode") ? localStorage.setItem("darkMode","enabled") : localStorage.setItem("darkMode","disabled")
 })
 
 const profile = document.getElementById("profile")
@@ -59,7 +59,63 @@ document.getElementById("profileBtn").addEventListener("click", e => {
 })
 
 window.addEventListener("DOMContentLoaded", e => {
+    loadChart()
+    checkBudgetExists()
     setTimeout(()=>{
         document.getElementById("loader").style.display = "none"
     },2000)
 })
+
+
+// Main Dashboard script
+
+const totalSpent = document.getElementById("totalSpentPrice")
+const remainingPrice = document.getElementById("remainingPrice")
+const budgetContainer = document.getElementById("budget-container")
+
+// const totalExpense = (currentUser,users) => {
+//     let expens = currentUser.expens
+//     console.log()
+// }
+// totalExpense()
+
+const checkBudgetExists = () => {
+    const budget = localStorage.getItem("budget")
+    if(budget){
+        budgetContainer.innerHTML = `
+            <span class="toatalSDisplay" id="budgetPriceText">₹${budget.toLocaleString('en-In')}</span>
+            <button id="editBudgetBtn"><i class="fa-solid fa-pen"></i> Edit</button>
+            `
+        getPriceDetails(budget)
+
+        document.getElementById("editBudgetBtn").addEventListener("click", e => {
+            budgetContainer.innerHTML = ""
+            budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Enter Your Budget" value=${budget}> <button id="budgetBtn">Add</button>`
+            
+            const budgetBtn = document.getElementById("budgetBtn")  
+            budgetBtn.addEventListener("click", e => {
+                const budgetPrice = document.getElementById("budgetPrice").value
+                localStorage.setItem("budget",budgetPrice)
+                checkBudgetExists()
+            })
+        })
+        
+    }else{
+        budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Enter Your Budget"> <button id="budgetBtn"><i class="fa-solid fa-plus"></i> Add</button>`
+        getPriceDetails(budget)
+        
+        const budgetBtn = document.getElementById("budgetBtn")  
+        budgetBtn.addEventListener("click", e => {
+            const budgetPrice = document.getElementById("budgetPrice").value
+            localStorage.setItem("budget",budgetPrice)
+            checkBudgetExists()
+        })
+    }
+}
+
+const getPriceDetails = (budget) => {
+    console.log("Budget: " + budget)
+    let totalS = user.totalSpent ? user.totalSpent : 0
+    totalSpent.textContent = `₹${totalS.toLocaleString("en-IN")}`
+    remainingPrice.textContent = `₹${((budget ? budget - totalS : 0)).toLocaleString('en-In')}`
+}
