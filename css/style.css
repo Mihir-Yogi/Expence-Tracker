@@ -907,4 +907,23 @@ body::-webkit-scrollbar {
     .tableLayout{
         border-radius: 0;
     }
+
+    input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: transparent;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: white; /* adjust based on dark/light mode */
+}
+
+.dark-mode input[type="date"] {
+  color: white;
+  border-color: #555;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* makes the calendar icon visible in dark mode */
+}
 }
