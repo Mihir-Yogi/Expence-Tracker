@@ -797,10 +797,10 @@ body::-webkit-scrollbar {
     .profileIcon {
         padding: 5px 9px;
     }
-
+/* 
     html,body{
         overflow: hidden;
-    }
+    } */
 /* 
     .sideNav{
         display: none;
