@@ -18,7 +18,7 @@ const showSection = showSec => {
 
 const currentUser = localStorage.getItem("isLoggedIn") ? JSON.parse(localStorage.getItem("currentUser")) : JSON.parse(sessionStorage.getItem("currentUser"))
 dashboardTab.addEventListener("click", e => {
-    document.getElementById("totalSpentPrice").textContent = `₹${currentUser.totalSpent}`
+    document.getElementById("totalSpentPrice").textContent = `₹${currentUser.totalSpent ? currentUser.totalSpent : 0}`
     loadChart();
     showSection(dashboardSection)
     localStorage.setItem("showSectionStatus","dashboard")

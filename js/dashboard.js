@@ -114,7 +114,6 @@ const checkBudgetExists = () => {
 }
 
 const getPriceDetails = (budget) => {
-    console.log("Budget: " + budget)
     let totalS = user.totalSpent ? user.totalSpent : 0
     totalSpent.textContent = `₹${totalS.toLocaleString("en-IN")}`
     remainingPrice.textContent = `₹${((budget ? budget - totalS : 0)).toLocaleString('en-In')}`
