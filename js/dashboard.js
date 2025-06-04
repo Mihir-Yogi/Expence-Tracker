@@ -118,3 +118,16 @@ const getPriceDetails = (budget) => {
     totalSpent.textContent = `₹${totalS.toLocaleString("en-IN")}`
     remainingPrice.textContent = `₹${((budget ? budget - totalS : 0)).toLocaleString('en-In')}`
 }
+
+
+const hamburger = document.getElementById('hamburger');
+  const sideNav = document.querySelector('.sideNav');
+
+  hamburger.addEventListener('click', () => {
+    sideNav.classList.toggle('open');
+  });
+  document.addEventListener('click', function (event) {
+  if (!sideNav.contains(event.target) && !hamburger.contains(event.target)) {
+    sideNav.classList.remove('open');
+  }
+});
