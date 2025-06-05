@@ -26,6 +26,7 @@ if(logoutBtn){
         sessionStorage.removeItem("currentUser")
         sessionStorage.removeItem("darkMode")
         localStorage.removeItem("showSectionStatus")
+        localStorage.removeItem("budget")
         window.location.href = "login.html"
     }
 })
