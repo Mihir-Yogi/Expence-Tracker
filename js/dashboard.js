@@ -92,7 +92,7 @@ const checkBudgetExists = () => {
 
         document.getElementById("editBudgetBtn").addEventListener("click", e => {
             budgetContainer.innerHTML = ""
-            budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Enter Your Budget" value=${budget}> <button id="budgetBtn">Add</button>`
+            budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Enter Your Budget" value=${budget}> <button id="budgetBtn"><i class="fa-solid fa-plus"></i>Add</button>`
             
             const budgetBtn = document.getElementById("budgetBtn")  
             budgetBtn.addEventListener("click", e => {
@@ -103,7 +103,7 @@ const checkBudgetExists = () => {
         })
         
     }else{
-        budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Add Budget"> <button id="budgetBtn"><i class="fa-solid fa-plus"></i> Add</button>`
+        budgetContainer.innerHTML = `<input type="number" id="budgetPrice" placeholder="Add Budget" /> <button id="budgetBtn"><i class="fa-solid fa-plus"></i> Add</button>`
         getPriceDetails(budget)
         
         const budgetBtn = document.getElementById("budgetBtn")  

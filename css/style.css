@@ -400,6 +400,7 @@ h4{
     cursor: pointer;
     margin-right: 10px;
 }
+
 /* main Container */
 
 .main-container{
@@ -810,14 +811,6 @@ body::-webkit-scrollbar {
     .dashboard{
         padding: 20px 20px;
     }
-/* 
-    html,body{
-        overflow: hidden;
-    } */
-/* 
-    .sideNav{
-        display: none;
-    } */
 
     .main-container{
         margin-left: 0;
@@ -906,7 +899,7 @@ body::-webkit-scrollbar {
 
     .dashboard .container .box #budget-container #editBudgetBtn{
         margin: 0 0;
-        width: 40px;
+        width: 70px;
         height: 30px;
     }    
     .form {
