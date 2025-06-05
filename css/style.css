@@ -49,6 +49,7 @@ input::placeholder{
     margin: 10px 0;
     border-bottom: 1px solid rgb(137, 137, 137);
     color: rgb(39, 39, 39);
+    background: transparent;
 }
 
 .inputs p{
