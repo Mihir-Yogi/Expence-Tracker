@@ -20,17 +20,21 @@ const currentUser = localStorage.getItem("isLoggedIn") ? JSON.parse(localStorage
 dashboardTab.addEventListener("click", e => {
     document.getElementById("totalSpentPrice").textContent = `₹${currentUser.totalSpent ? currentUser.totalSpent : 0}`
     loadChart();
-    showSection(dashboardSection)
-    localStorage.setItem("showSectionStatus","dashboard")
-})
+    showSection(dashboardSection);
+    localStorage.setItem("showSectionStatus", "dashboard");
+
+    history.pushState({ section: "dashboard" }, "", "#dashboard");
+});
 
 addExpenseTab.addEventListener("click", e => {
     loadChart();
-    clearForm()
-    showSection(addExpenseSection)
-    localStorage.setItem("showSectionStatus","addExpense")
-    backBtnWork()
-})
+    clearForm();
+    showSection(addExpenseSection);
+    localStorage.setItem("showSectionStatus", "addExpense");
+
+    history.pushState({ section: "addExpense" }, "", "#addExpense");
+    backBtnWork();
+});
 
 const showList = () => {
     loadChart();
@@ -66,12 +70,31 @@ const showList = () => {
     })
 }
 
+window.addEventListener("popstate", (event) => {
+    if (event.state && event.state.section) {
+        switch (event.state.section) {
+            case "dashboard":
+                showSection(dashboardSection);
+                break;
+            case "addExpense":
+                showSection(addExpenseSection);
+                break;
+            case "showExpense":
+                showSection(showExpenseSection);
+                break;
+        }
+    }
+});
+
+
 showExpenseTab.addEventListener("click", e => {
     clearForm()
     showSection(showExpenseSection)
     localStorage.setItem("showSectionStatus","showExpense")
     backBtnWork()
     showList()
+    
+    history.pushState({ section: "showExpense" }, "", "#showExpense");
 })
 
 const clearForm = () => {

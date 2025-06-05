@@ -396,7 +396,7 @@ h4{
 
 .hamburger {
     display: none;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     margin-right: 10px;
 }
@@ -806,6 +806,10 @@ body::-webkit-scrollbar {
     .profileIcon {
         padding: 5px 9px;
     }
+
+    .dashboard{
+        padding: 20px 20px;
+    }
 /* 
     html,body{
         overflow: hidden;
@@ -820,12 +824,11 @@ body::-webkit-scrollbar {
         padding: 0;
     }
 
-    .dashboard{
-        padding: 40px 10px;
-    }
     .hamburger {
         display: inline;
     }
+
+    
 
     .sideNav {
         position: fixed;
@@ -854,12 +857,12 @@ body::-webkit-scrollbar {
 
     .dashboard .container .box .toatalSDisplay:last-child,
     .dashboard .container .box #budget-container .toatalSDisplay:first-child{
-        font-size: 20px;
+        font-size: 30px;
         padding-bottom: 1px;
     }
     
     .dashboard .container .box{
-        width: 100px;
+        width: 100%;
         height: 100px;
         margin: 5px;
         display: flex;
@@ -867,36 +870,39 @@ body::-webkit-scrollbar {
         justify-content: center;
         align-items: start;
         padding-left: 10px;
-        font-size: 15px;
-
     }
     .dashboard .container .box .toatalSDisplay{
         padding-bottom: 10px;
     }
 
     #budget-container input{
-        width: 90%;
+        width: 80%;
         height: 20px;
-        font-size: 12px;
+        font-size: 18px;
         margin: 0;
+        margin-bottom: 5px;
         border-bottom: 1px solid rgb(137, 137, 137);
         color: rgb(39, 39, 39);
     }
 
     #budget-container #budgetBtn{
-        margin: 0 0;
+        margin: 0 10px;
         width: 40px;
         height: 30px;
     }
-/* 
+
     #budget-container{
         display: flex;
-        flex-direction: column;
-    } */
+        width: 100%;
+    }
     .dashboard .container i{
-        display: none;
         height: 30px;
     }
+/* 
+    .dashboard .container{
+        display: flex;
+        width: 100%;
+    } */
 
     .dashboard .container .box #budget-container #editBudgetBtn{
         margin: 0 0;
@@ -927,5 +933,9 @@ body::-webkit-scrollbar {
         box-shadow: none;
         padding: 0;
         padding-top: 50px;
+    }
+
+    #expenseChart{
+        width: 100%;
     }
 }
