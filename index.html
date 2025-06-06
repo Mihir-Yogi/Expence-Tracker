@@ -52,6 +52,30 @@
             <li id="showExpenseTab"><i class="fa-solid fa-eye"></i>Show Expenses<i class="fa-solid fa-chevron-right"></i></li>
         </ul>
     </div>
+    <div class="main-container">
+        <section id="dashboardSection">
+            <div class="dashboard">
+                <h1>👋Welcome <span id="homeGreet"></span></h1>
+                <p class="secondory-text">Here's an overview of your expenses and budget.</p>
+                <div class="container">
+                    <div class="box">
+                        <span class="toatalSDisplay">Total Spent</span>
+                        <span class="toatalSDisplay" id="totalSpentPrice">₹0</span>
+                    </div>
+                    <div class="box">
+                        <span class="toatalSDisplay">Budget</span>
+                        <div  id="budget-container">
+                            <!-- <span class="toatalSDisplay">₹20,000</span> -->
+                        </div>
+                    </div>
+                    <div class="box">
+                        <span class="toatalSDisplay">Remaining Budget</span>
+                        <span class="toatalSDisplay" id="remainingPrice">₹0</span>
+                    </div>
+                </div>
+                <canvas id="expenseChart"></canvas>
+            </div>
+        </section>
 
 
         <section id="showExpenseSection">
